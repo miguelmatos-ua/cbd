@@ -1,0 +1,19 @@
+//Miguel C. Matos
+//89124
+
+>help
+
+>capture file
+//output direcionado para file
+
+>source file
+//input a partir do file
+
+>CREATE KEYSPACE tutorialspoint
+WITH replication = {'class':'SimpleStrategy', 'replication_factor' : 3};
+//Cria um nove keyspace tutorialspoint
+
+>DESCRIBE keyspaces;
+//Mostra os keyspaces
+
+>

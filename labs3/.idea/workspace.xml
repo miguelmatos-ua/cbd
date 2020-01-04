@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="0a12d67b-8b6e-4fb8-aee9-9bc794b7a9ba" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="Apache Cassandra - @localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="Apache Cassandra - @localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="keyspaces" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="labs3" />
+  </component>
+  <component name="ProjectId" id="1TbQ1L4uG379ll5YiJrf3oFMhpD" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="cassandra" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="android.sdk.path" value="$USER_HOME$/Android/Sdk" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="database.data.extractors.current.id" value="SQL Inserts" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/3/CassandraDriver" />
+    <property name="settings.editor.selected.configurable" value="database.main" />
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:Apache Cassandra - @localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:Apache Cassandra - @localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="com.intellij.database.console.session.MessageBusSession@1b505439" type="9fbbdea:ServiceModel$ServiceNode" />
+              </path>
+            </expand>
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0a12d67b-8b6e-4fb8-aee9-9bc794b7a9ba" name="Default Changelist" comment="" />
+      <created>1573726098243</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1573726098243</updated>
+      <workItem from="1573726109246" duration="3052000" />
+      <workItem from="1573997844943" duration="107000" />
+      <workItem from="1574288268842" duration="12427000" />
+      <workItem from="1574869644578" duration="8518000" />
+      <workItem from="1574932848586" duration="355000" />
+      <workItem from="1575296246144" duration="2043000" />
+      <workItem from="1575382363779" duration="4554000" />
+      <workItem from="1575411954623" duration="2755000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="141" y="21" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1575414691538">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="141" y="21" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1575414691538" />
+    <state x="531" y="255" width="293" height="211" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1575383299445">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="531" y="255" width="293" height="211" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1366.728@0.0.1366.728" timestamp="1575383299445" />
+    <state x="466" y="121" width="424" height="479" key="FileChooserDialogImpl" timestamp="1575414719625">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="466" y="121" width="424" height="479" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1575414719625" />
+    <state width="906" height="173" key="GridCell.Tab.0.bottom" timestamp="1575414650739">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="906" height="173" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1575414650739" />
+    <state width="906" height="173" key="GridCell.Tab.0.center" timestamp="1575414650737">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="906" height="173" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1575414650737" />
+    <state width="906" height="173" key="GridCell.Tab.0.left" timestamp="1575414650736">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="906" height="173" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1575414650736" />
+    <state width="906" height="173" key="GridCell.Tab.0.right" timestamp="1575414650738">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="906" height="173" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1575414650738" />
+    <state x="523" y="261" width="327" height="226" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1575386345396">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="523" y="261" width="327" height="226" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/0.0.1366.728@0.0.1366.728" timestamp="1575386345396" />
+    <state x="395" y="107" width="566" height="506" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1575413563323">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="395" y="107" width="566" height="506" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1366.728@0.0.1366.728" timestamp="1575413563323" />
+  </component>
+</project>

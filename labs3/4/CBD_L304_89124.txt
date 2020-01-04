@@ -1,0 +1,130 @@
+use cbd_4;
+
+CREATE TABLE actor
+(
+    actorid        uuid,
+    name           text,
+    birth          int,
+    place_of_birth text,
+    PRIMARY KEY ( actorid, birth )
+) WITH CLUSTERING ORDER BY (birth desc);
+
+INSERT INTO actor (actorid, name, birth, place_of_birth)
+VALUES (uuid(), 'Samuel L. Jackson', 1948, 'Washington');
+INSERT INTO actor (actorid, name, birth, place_of_birth)
+VALUES (uuid(), 'John Travolta', 1954, 'New Jersey');
+INSERT INTO actor (actorid, name, birth, place_of_birth)
+VALUES (uuid(), 'Bruce Willis', 1955, 'West Germany');
+INSERT INTO actor (actorid, name, birth, place_of_birth)
+VALUES (uuid(), 'Uma Thurman', 1970, 'Boston');
+INSERT INTO actor (actorid, name, birth, place_of_birth)
+VALUES (uuid(), 'Tim Roth', 1961, 'London');
+INSERT INTO actor (actorid, name, birth, place_of_birth)
+VALUES (uuid(), 'Maria de Medeiros', 1965, 'Lisbon');
+INSERT INTO actor (actorid, name, birth, place_of_birth)
+VALUES (uuid(), 'Harvey Keitel', 1939, 'Brooklyn');
+
+
+CREATE INDEX aname on actor (name);
+
+CREATE TABLE director
+(
+    directorid     uuid,
+    birth          int,
+    name           text,
+    place_of_birth text,
+    PRIMARY KEY ( directorid, birth )
+) WITH CLUSTERING ORDER BY (birth desc);
+
+CREATE INDEX dname on director (name);
+
+INSERT INTO director (directorid, birth, name, place_of_birth)
+VALUES (uuid(), 1963, 'Quentin Tarantino', 'Tennessee');
+INSERT INTO director (directorid, birth, name, place_of_birth)
+VALUES (uuid(), 1942, 'Martin Scorsese', 'New York');
+INSERT INTO director (directorid, birth, name, place_of_birth)
+VALUES (uuid(), 1899, 'Alfred Hitchcock', 'London');
+
+CREATE TABLE movies
+(
+    movieid  uuid,
+    title    text,
+    year     int,
+    genre    set<text>,
+    director text,
+    actors   map<text,text>,
+    PRIMARY KEY ( movieid, year )
+) WITH CLUSTERING ORDER BY (year DESC);
+
+CREATE INDEX movie_title ON movies (title);
+CREATE INDEX movie_year ON movies (year);
+
+INSERT INTO movies (movieid, title, year, genre, director, actors)
+VALUES (uuid(), 'Pulp Fiction', 1994, {'Crime', 'Drama'}, 'Quentin Tarantino',
+        {'John Travolta':'Vincent Vega', 'Samuel L. Jackson':'Jules', 'Bruce Willis': 'Butch'});
+INSERT INTO movies (movieid, title, year, genre, director, actors)
+VALUES (uuid(), 'Rebbecca', 1940, {'Drama', 'Mystery', 'Romance'}, 'Alfred Hitchcock',
+        {'Joan Fontaine':'Mrs. de Winter'});
+INSERT INTO movies (movieid, title, year, genre, director, actors)
+VALUES (uuid(), 'The Irishman', 2019, {'Crime', 'Drama', 'Biography'}, 'Martin Scorcese',
+        {'Robert De Niro':'Frank Sheeran', 'Al Pacino':'Jimmy Hoffa', 'Joe Pesci':'Russel Bufalino', 'Harvey Keitel':'Angelo Bruno'});
+INSERT INTO movies (movieid, title, year, genre, director, actors)
+VALUES (uuid(), 'The Shawshank Redemption', 1994, {'Drama'}, 'Frank Darabont',
+        {'Tim Robbins':'Andy Dufresne', 'Morgan Freeman':'Red'});
+INSERT INTO movies (movieid, title, year, genre, director, actors)
+VALUES (uuid(), 'Reservoir Dogs', 1992, {'Crime', 'Drama', 'Thriller'}, 'Quentin Tarantino',
+        {'Harvey Keitel':'Mr. White', 'Tim Roth':'Mr. Orange', 'Michael Madsen': 'Mr. Blonde'});
+
+CREATE TABLE movies_by_director
+(
+    title    text,
+    year     int,
+    genre    set<text>,
+    director text,
+    actors   map<text,text>,
+    PRIMARY KEY ( director, year )
+);
+
+INSERT INTO movies_by_director (title, year, genre, director, actors)
+VALUES ('Pulp Fiction', 1994, {'Crime', 'Drama'}, 'Quentin Tarantino',
+        {'John Travolta':'Vincent Vega', 'Samuel L. Jackson':'Jules', 'Bruce Willis': 'Butch'});
+INSERT INTO movies_by_director (title, year, genre, director, actors)
+VALUES ('Reservoir Dogs', 1992, {'Crime', 'Drama', 'Thriller'}, 'Quentin Tarantino',
+        {'Harvey Keitel':'Mr. White', 'Tim Roth':'Mr. Orange', 'Michael Madsen': 'Mr. Blonde'});
+
+CREATE TABLE movies_by_actor
+(
+    actor    text,
+    title    text,
+    year     int,
+    genre    set<text>,
+    director text,
+    actors   map<text,text>,
+    PRIMARY KEY ( actor, year )
+);
+
+INSERT INTO movies_by_actor (actor, title, year, genre, director, actors)
+VALUES ('Harvey Keitel', 'The Irishman', 2019, {'Crime', 'Drama', 'Biography'}, 'Martin Scorcese',
+        {'Robert De Niro':'Frank Sheeran', 'Al Pacino':'Jimmy Hoffa', 'Joe Pesci':'Russel Bufalino', 'Harvey Keitel':'Angelo Bruno'});
+INSERT INTO movies_by_actor (actor, title, year, genre, director, actors)
+VALUES ('Harvey Keitel', 'Reservoir Dogs', 1992, {'Crime', 'Drama', 'Thriller'}, 'Quentin Tarantino',
+        {'Harvey Keitel':'Mr. White', 'Tim Roth':'Mr. Orange', 'Michael Madsen': 'Mr. Blonde'});
+
+-- Detalhes do filme The Irishman
+SELECT *
+FROM movies
+WHERE title = 'The Irishman';
+
+-- Filmes do ator Harvey Keitel
+SELECT *
+FROM movies_by_actor
+where actor = 'Harvey Keitel';
+
+-- Filmes do realizador Quentin Tarantino
+SELECT *
+FROM movies_by_director
+WHERE director = 'Quentin Tarantino';
+
+-- Filmes de 1994
+SELECT *
+FROM movies WHERE year = 1994;

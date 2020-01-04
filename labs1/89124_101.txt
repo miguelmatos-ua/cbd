@@ -1,0 +1,58 @@
+SET testkey hello
+EXISTS testkey
+TYPE testkey
+KEYS *
+DEL testkey
+EXISTS testkey
+TYPE testkey
+SCAN 0
+SCAN 0 MATCH "hell*"
+SET Book:1 "Infinite Jest"
+GET Book:1
+SET Book:1:ReadAction 1
+GET Book:1:ReadAction
+INCR Book:1:ReadAction
+GET Book:1:ReadAction
+INCRBY Book:1:ReadAction 20
+GET Book:1:ReadAction
+DECR Book:1:ReadAction
+GET Book:1:ReadAction
+DECRBY Book:1:ReadAction 5
+GET Book:1:ReadAction
+INCR Book:1 "Infinite Jest"
+MSET Person:2 "Kurt Vonnegut" Person:3 "Jane Austen" Person:4 "Mark Twain"
+MGET Person:2 Person:3 Person:4
+LPUSH Book:1:comment "This was a fun read"
+LRANGE Book:1:comment 0 -1
+LPUSH Book:1:comment "Way too long!"
+LRANGE Book:1:comment 0 -1
+RPUSH Book:1:comment "Tennis anyone?"
+LRANGE Book:1:comment 0 -1
+LPOP Book:1:comment
+LRANGE Book:1:comment 0 -1
+RPOP Book:1:comment
+LRANGE Book:1:comment 0 -1
+RPUSH Organization:1:members Person:1 Person:2 Person:3 Person:4
+LRANGE Organization:1:members 0 -1
+LTRIM Organization:1:members 0 2
+LRANGE Organization:1:members 0 -1
+BRPOP Organization:1:members 5
+LRANGE Organization:1:members 0 -1
+HSET Book:3 name "Cats Cradle"
+HGET Book:3 name
+HMSET Book:4 name "Slaughterhouse-Five" author "Kurt Vonnegut" copyrightYear 1969 ISBN 29960763
+HMGET Book:4 author ISBN
+HGETALL Book:4
+HEXISTS Book:4 copyrightYear
+HLEN Book:4
+HKEYS Book:4
+HVALS Book:4
+SET Organization:5 "Beatles"
+SADD Organization:5:member Paul John George Ringo
+SMEMBERS Organization:5:member
+SISMEMBER Organization:5:member "John"
+SISMEMBER Organization:5:member "Ralph"
+SCARD Organization:5:member
+ZADD copyrightYear 1996 Book:1 2014 Book:2 1963 Book:3
+ZRANGE copyrightYear 0 -1
+ZRANGE copyrightYear 0 -1 WITHSCORES

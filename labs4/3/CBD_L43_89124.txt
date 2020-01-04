@@ -1,0 +1,65 @@
+# a) e b)
+LOAD CSV WITH HEADERS FROM "file:///git_selection.csv" as line
+MERGE (u:User {svn_id: line.svn_id, real_name: line.real_name}) 
+
+LOAD CSV WITH HEADERS FROM "file:///git_selection.csv" as line
+MERGE (p:Project {project_name:line.project_name})
+
+LOAD CSV WITH HEADERS FROM "file:///git_selection.csv" as line
+MATCH (u:User {svn_id:line.svn_id})
+MATCH (p:Project {project_name:line.project_name})
+MERGE (u)-[r:WORKS_ON {role_on_project:line.role_on_project}]->(p)
+
+LOAD CSV WITH HEADERS FROM "file:///git_selection.csv" as line
+MERGE (c:Organization {organization:line.organization})
+
+LOAD CSV WITH HEADERS FROM "file:///git_selection.csv" as line
+MATCH (u:User {svn_id:line.svn_id})
+MATCH (o:Organization {organization:line.organization})
+MERGE (u)-[r:WORKS_FOR]->(o)
+
+# c)
+
+# 1
+match(n:User) return n
+
+# 2
+MATCH (n:User) with n.real_name as name return name
+
+# 3
+MACTH (u:User)-[:WORKS_ON]->(p:Project)
+WITH collect(p) as projects
+RETURN projects
+
+# 4
+Match (u:User)-[:WORKS_ON]->(p:Project) 
+with u, count(p) as total 
+return u, total
+
+# 5
+Match (u:User)-[:WORKS_ON]->(p:Project) 
+with u, count(p) as total
+return u, total
+order by total desc
+
+# 6
+match (p:Project)<-[:WORKS_ON]-(u:User) 
+WITH p, count(u) as members 
+return p, members
+
+# 7
+match (p:Project)<-[r:WORKS_ON]-(u:User) 
+WHERE r.role_on_project='Committer' 
+WITH p, r, count(u) as members 
+return p, r, members
+
+# 8
+match (u1:User)-[:WORKS_ON]->(p:Project)<-[:WORKS_ON]-(u2:User) 
+where u1.svn_id='atm' and u2.svn_id <> 'atm' 
+return u1.real_name, p, u2
+
+# 9
+match (u1:User)-[r1:WORKS_ON]->(p:Project)<-[r2:WORKS_ON]-(u2:User) 
+where u1.svn_id='atm' and u2.svn_id <> 'atm' 
+and r1.role_on_project='PMC' and r2.role_on_project='Committer' 
+return u1.real_name, p, u2

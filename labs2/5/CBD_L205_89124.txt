@@ -1,0 +1,57 @@
+//Miguel C. Matos
+//89124
+
+#C)
+
+//atributos name e founded_year de todas as companies criadas depois de 2010
+db.comp.find({founded_year:{$gt: 2010}},{name:1, founded_year:1, _id:0})
+
+//name, offices, raised_amount e raise_currency_code de todas as empresas com pelo menos um escritorio nos USA que angariaram pelo menos 700000 USD e no maximo 7000000 numa das funding_round para os investments
+db.comp.find({"offices.country_code":"USA", "investments.funding_round.raised_currency_code":"USD", "investments.funding_round.raised_amount":{$gte:700000, $lte:7000000}},{name:1, offices:1, "investments.funding_round.raised_amount":1, "investments.funding_round.raised_currency_code":1, _id:0})
+
+//name, number_of_employees e relationships.person de todas as empresas que começam por "A", o number_of_employees não é null e o primeiro nome de uma das pessoas nas relationships é "Michael". Ordenado por number_of_employees de forma decrescente
+db.comp.find({number_of_employees: {$ne:null}, name:{$regex:/^A/}, "relationships.person.first_name":"Michael"},{_id:0, name:1, number_of_employees:1, "relationships.person":1}).sort({number_of_employees:-1})
+
+//nome e descriptions de milestones, quando as empresas só têm 2 milestones
+db.comp.find({milestones: {$size:2}},{_id:0, name:1, "milestones.description":1})
+
+//número das empresas com um escritório em Portugal sem ser Lisboa (21)
+db.comp.find({"offices.country_code":"PRT", "offices.city":{$nin:["Lisboa","Lisbon"]}}).count()
+
+//empresas com o número de funcionários maior que 100, fundada depois de 2003, que vendem 2 ou mais produtos e com uma funding round em 2005
+db.comp.find({number_of_employees: {$gt:100}, founded_year:{$gt:2003}, products:{$not:{$size:1}, $ne:[]}, "funding_rounds.funded_year":2005})
+
+
+# D)
+
+//atributos name e founded_year de todas as companies criadas depois de 2010 ordenadas por founded_year de forma crescente
+db.comp.aggregate([{$project: {name:1, founded_year:1, _id:0}}, {$match:{founded_year:{$gt:2010}}}, {$sort:{founded_year:1}}])
+
+//total de funding_rounds de empresas com escritório(s) em "USA" com raised_currency_code em "USD" e que angariaram entre 100000 e 1000000 (1310)
+db.comp.aggregate([{$unwind: "$funding_rounds"}, {$match:{"offices.country_code":"USA", "funding_rounds.raised_amount":{$gte:100000, $lte:1000000}, "funding_rounds.raised_currency_code":"USD"}}, {$count:"total"}])
+
+//total de offices em Portugal mas não em Lisboa
+db.comp.aggregate([{$unwind:"$offices"}, {$match:{"offices.country_code":"PRT", "offices.city":{$nin:["Lisboa","Lisbon"]}}}, {$count:"total"}])
+
+//total raised_amount de todas as empresas de forma decrescente
+db.comp.aggregate([{$unwind:"$funding_rounds"}, {$group:{_id:"$name", total:{$sum:"$funding_rounds.raised_amount"}}}, {$sort:{total:-1}}])
+
+//total de produtos de empresas com um numero de employees maior que 100 com uma funding_round em 2005, ordenado de forma decrescente
+db.comp.aggregate([{$unwind:"$products"}, {$match: {number_of_employees:{$gt:100}, "funding_rounds.funded_year":2005}}, {$group: {_id:"$name", size: {$sum:1}}}, {$sort:{"size":-1}}])
+
+//name, number_of_employees e relationships.person de todas as empresas que começam por "A", o number_of_employees não é null e o primeiro nome de uma das pessoas nas relationships é "Michael". Ordenado por number_of_employees de forma decrescente
+db.comp.aggregate([{$project:{name:1,number_of_employees:1,"relationships.person":1,_id:0}}, {$match:{number_of_employees: {$ne:null}, name:{$regex:/^A/}, "relationships.person.first_name":"Michael"}}, {$sort:{number_of_employees:-1}}])
+
+//total de offices por empresa ordenado de forma decrescente
+db.comp.aggregate([{$unwind:"$offices"}, {$group:{_id:"$name", total_offices:{$sum:1}}}, {$sort:{total_offices:-1}}])
+
+//Total de offices da google por país
+db.comp.aggregate([{$unwind:"$offices"}, {$match:{name:"Google"}}, {$group:{_id:"$offices.country_code", sum:{$sum:1}}}])
+
+
+
+
+
+
+
+

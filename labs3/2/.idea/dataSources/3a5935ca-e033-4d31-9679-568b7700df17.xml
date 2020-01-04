@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="cbd_2@localhost">
+  <database-model serializer="dbm" dbms="CASSANDRA" family-id="CASSANDRA" format-version="4.16">
+    <root id="1">
+      <ServerVersion>3.11.5</ServerVersion>
+    </root>
+    <schema id="2" parent="1" name="cbd_2">
+      <Replication>{&apos;class&apos;: &apos;org.apache.cassandra.locator.SimpleStrategy&apos;, &apos;replication_factor&apos;: &apos;3&apos;}</Replication>
+      <Current>1</Current>
+    </schema>
+    <schema id="3" parent="1" name="cbd_4">
+      <Replication>{&apos;class&apos;: &apos;org.apache.cassandra.locator.SimpleStrategy&apos;, &apos;replication_factor&apos;: &apos;3&apos;}</Replication>
+    </schema>
+    <schema id="4" parent="1" name="system">
+      <Replication>{&apos;class&apos;: &apos;org.apache.cassandra.locator.LocalStrategy&apos;}</Replication>
+    </schema>
+    <schema id="5" parent="1" name="system_auth">
+      <Replication>{&apos;class&apos;: &apos;org.apache.cassandra.locator.SimpleStrategy&apos;, &apos;replication_factor&apos;: &apos;1&apos;}</Replication>
+    </schema>
+    <schema id="6" parent="1" name="system_distributed">
+      <Replication>{&apos;class&apos;: &apos;org.apache.cassandra.locator.SimpleStrategy&apos;, &apos;replication_factor&apos;: &apos;3&apos;}</Replication>
+    </schema>
+    <schema id="7" parent="1" name="system_schema">
+      <Replication>{&apos;class&apos;: &apos;org.apache.cassandra.locator.LocalStrategy&apos;}</Replication>
+    </schema>
+    <schema id="8" parent="1" name="system_traces">
+      <Replication>{&apos;class&apos;: &apos;org.apache.cassandra.locator.SimpleStrategy&apos;, &apos;replication_factor&apos;: &apos;2&apos;}</Replication>
+    </schema>
+    <role id="9" parent="1" name="cassandra">
+      <SuperRole>1</SuperRole>
+      <CanLogin>1</CanLogin>
+    </role>
+    <table id="10" parent="2" name="gestao_comments">
+      <Caching>{&apos;keys&apos;: &apos;ALL&apos;, &apos;rows_per_partition&apos;: &apos;NONE&apos;}</Caching>
+      <Compaction>{&apos;max_threshold&apos;: &apos;32&apos;, &apos;min_threshold&apos;: &apos;4&apos;, &apos;class&apos;: &apos;org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy&apos;}</Compaction>
+      <Compression>{&apos;class&apos;: &apos;org.apache.cassandra.io.compress.LZ4Compressor&apos;, &apos;chunk_length_in_kb&apos;: &apos;64&apos;}</Compression>
+      <DclocalReadRepairChance>0.1</DclocalReadRepairChance>
+      <SpeculativeRetry>99PERCENTILE</SpeculativeRetry>
+    </table>
+    <table id="11" parent="2" name="gestao_users">
+      <Caching>{&apos;keys&apos;: &apos;ALL&apos;, &apos;rows_per_partition&apos;: &apos;NONE&apos;}</Caching>
+      <Compaction>{&apos;max_threshold&apos;: &apos;32&apos;, &apos;min_threshold&apos;: &apos;4&apos;, &apos;class&apos;: &apos;org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy&apos;}</Compaction>
+      <Compression>{&apos;class&apos;: &apos;org.apache.cassandra.io.compress.LZ4Compressor&apos;, &apos;chunk_length_in_kb&apos;: &apos;64&apos;}</Compression>
+      <DclocalReadRepairChance>0.1</DclocalReadRepairChance>
+      <SpeculativeRetry>99PERCENTILE</SpeculativeRetry>
+    </table>
+    <table id="12" parent="2" name="gestao_video_followers">
+      <Caching>{&apos;keys&apos;: &apos;ALL&apos;, &apos;rows_per_partition&apos;: &apos;NONE&apos;}</Caching>
+      <Compaction>{&apos;max_threshold&apos;: &apos;32&apos;, &apos;min_threshold&apos;: &apos;4&apos;, &apos;class&apos;: &apos;org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy&apos;}</Compaction>
+      <Compression>{&apos;class&apos;: &apos;org.apache.cassandra.io.compress.LZ4Compressor&apos;, &apos;chunk_length_in_kb&apos;: &apos;64&apos;}</Compression>
+      <DclocalReadRepairChance>0.1</DclocalReadRepairChance>
+      <SpeculativeRetry>99PERCENTILE</SpeculativeRetry>
+    </table>
+    <table id="13" parent="2" name="gestao_videos">
+      <Caching>{&apos;keys&apos;: &apos;ALL&apos;, &apos;rows_per_partition&apos;: &apos;NONE&apos;}</Caching>
+      <Compaction>{&apos;max_threshold&apos;: &apos;32&apos;, &apos;min_threshold&apos;: &apos;4&apos;, &apos;class&apos;: &apos;org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy&apos;}</Compaction>
+      <Compression>{&apos;class&apos;: &apos;org.apache.cassandra.io.compress.LZ4Compressor&apos;, &apos;chunk_length_in_kb&apos;: &apos;64&apos;}</Compression>
+      <DclocalReadRepairChance>0.1</DclocalReadRepairChance>
+      <SpeculativeRetry>99PERCENTILE</SpeculativeRetry>
+    </table>
+    <table id="14" parent="2" name="registo_eventos">
+      <Caching>{&apos;keys&apos;: &apos;ALL&apos;, &apos;rows_per_partition&apos;: &apos;NONE&apos;}</Caching>
+      <Compaction>{&apos;max_threshold&apos;: &apos;32&apos;, &apos;min_threshold&apos;: &apos;4&apos;, &apos;class&apos;: &apos;org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy&apos;}</Compaction>
+      <Compression>{&apos;class&apos;: &apos;org.apache.cassandra.io.compress.LZ4Compressor&apos;, &apos;chunk_length_in_kb&apos;: &apos;64&apos;}</Compression>
+      <DclocalReadRepairChance>0.1</DclocalReadRepairChance>
+      <SpeculativeRetry>99PERCENTILE</SpeculativeRetry>
+    </table>
+    <table id="15" parent="2" name="search_comments_by_user">
+      <Caching>{&apos;keys&apos;: &apos;ALL&apos;, &apos;rows_per_partition&apos;: &apos;NONE&apos;}</Caching>
+      <Compaction>{&apos;max_threshold&apos;: &apos;32&apos;, &apos;min_threshold&apos;: &apos;4&apos;, &apos;class&apos;: &apos;org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy&apos;}</Compaction>
+      <Compression>{&apos;class&apos;: &apos;org.apache.cassandra.io.compress.LZ4Compressor&apos;, &apos;chunk_length_in_kb&apos;: &apos;64&apos;}</Compression>
+      <DclocalReadRepairChance>0.1</DclocalReadRepairChance>
+      <SpeculativeRetry>99PERCENTILE</SpeculativeRetry>
+    </table>
+    <table id="16" parent="2" name="search_comments_by_video">
+      <Caching>{&apos;keys&apos;: &apos;ALL&apos;, &apos;rows_per_partition&apos;: &apos;NONE&apos;}</Caching>
+      <Compaction>{&apos;max_threshold&apos;: &apos;32&apos;, &apos;min_threshold&apos;: &apos;4&apos;, &apos;class&apos;: &apos;org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy&apos;}</Compaction>
+      <Compression>{&apos;class&apos;: &apos;org.apache.cassandra.io.compress.LZ4Compressor&apos;, &apos;chunk_length_in_kb&apos;: &apos;64&apos;}</Compression>
+      <DclocalReadRepairChance>0.1</DclocalReadRepairChance>
+      <SpeculativeRetry>99PERCENTILE</SpeculativeRetry>
+    </table>
+    <table id="17" parent="2" name="search_videos_by_author">
+      <Caching>{&apos;keys&apos;: &apos;ALL&apos;, &apos;rows_per_partition&apos;: &apos;NONE&apos;}</Caching>
+      <Compaction>{&apos;max_threshold&apos;: &apos;32&apos;, &apos;min_threshold&apos;: &apos;4&apos;, &apos;class&apos;: &apos;org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy&apos;}</Compaction>
+      <Compression>{&apos;class&apos;: &apos;org.apache.cassandra.io.compress.LZ4Compressor&apos;, &apos;chunk_length_in_kb&apos;: &apos;64&apos;}</Compression>
+      <DclocalReadRepairChance>0.1</DclocalReadRepairChance>
+      <SpeculativeRetry>99PERCENTILE</SpeculativeRetry>
+    </table>
+    <table id="18" parent="2" name="video_ratings">
+      <Caching>{&apos;keys&apos;: &apos;ALL&apos;, &apos;rows_per_partition&apos;: &apos;NONE&apos;}</Caching>
+      <Compaction>{&apos;max_threshold&apos;: &apos;32&apos;, &apos;min_threshold&apos;: &apos;4&apos;, &apos;class&apos;: &apos;org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy&apos;}</Compaction>
+      <Compression>{&apos;class&apos;: &apos;org.apache.cassandra.io.compress.LZ4Compressor&apos;, &apos;chunk_length_in_kb&apos;: &apos;64&apos;}</Compression>
+      <DclocalReadRepairChance>0.1</DclocalReadRepairChance>
+      <SpeculativeRetry>99PERCENTILE</SpeculativeRetry>
+    </table>
+    <table id="19" parent="3" name="actor">
+      <Caching>{&apos;keys&apos;: &apos;ALL&apos;, &apos;rows_per_partition&apos;: &apos;NONE&apos;}</Caching>
+      <Compaction>{&apos;max_threshold&apos;: &apos;32&apos;, &apos;min_threshold&apos;: &apos;4&apos;, &apos;class&apos;: &apos;org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy&apos;}</Compaction>
+      <Compression>{&apos;class&apos;: &apos;org.apache.cassandra.io.compress.LZ4Compressor&apos;, &apos;chunk_length_in_kb&apos;: &apos;64&apos;}</Compression>
+      <DclocalReadRepairChance>0.1</DclocalReadRepairChance>
+      <SpeculativeRetry>99PERCENTILE</SpeculativeRetry>
+    </table>
+    <table id="20" parent="3" name="actor_by_name">
+      <Caching>{&apos;keys&apos;: &apos;ALL&apos;, &apos;rows_per_partition&apos;: &apos;NONE&apos;}</Caching>
+      <Compaction>{&apos;max_threshold&apos;: &apos;32&apos;, &apos;min_threshold&apos;: &apos;4&apos;, &apos;class&apos;: &apos;org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy&apos;}</Compaction>
+      <Compression>{&apos;class&apos;: &apos;org.apache.cassandra.io.compress.LZ4Compressor&apos;, &apos;chunk_length_in_kb&apos;: &apos;64&apos;}</Compression>
+      <DclocalReadRepairChance>0.1</DclocalReadRepairChance>
+      <SpeculativeRetry>99PERCENTILE</SpeculativeRetry>
+    </table>
+    <table id="21" parent="3" name="actors_by_place_of_birth">
+      <Caching>{&apos;keys&apos;: &apos;ALL&apos;, &apos;rows_per_partition&apos;: &apos;NONE&apos;}</Caching>
+      <Compaction>{&apos;max_threshold&apos;: &apos;32&apos;, &apos;min_threshold&apos;: &apos;4&apos;, &apos;class&apos;: &apos;org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy&apos;}</Compaction>
+      <Compression>{&apos;class&apos;: &apos;org.apache.cassandra.io.compress.LZ4Compressor&apos;, &apos;chunk_length_in_kb&apos;: &apos;64&apos;}</Compression>
+      <DclocalReadRepairChance>0.1</DclocalReadRepairChance>
+      <SpeculativeRetry>99PERCENTILE</SpeculativeRetry>
+    </table>
+    <table id="22" parent="3" name="director">
+      <Caching>{&apos;keys&apos;: &apos;ALL&apos;, &apos;rows_per_partition&apos;: &apos;NONE&apos;}</Caching>
+      <Compaction>{&apos;max_threshold&apos;: &apos;32&apos;, &apos;min_threshold&apos;: &apos;4&apos;, &apos;class&apos;: &apos;org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy&apos;}</Compaction>
+      <Compression>{&apos;class&apos;: &apos;org.apache.cassandra.io.compress.LZ4Compressor&apos;, &apos;chunk_length_in_kb&apos;: &apos;64&apos;}</Compression>
+      <DclocalReadRepairChance>0.1</DclocalReadRepairChance>
+      <SpeculativeRetry>99PERCENTILE</SpeculativeRetry>
+    </table>
+    <table id="23" parent="3" name="director_by_name">
+      <Caching>{&apos;keys&apos;: &apos;ALL&apos;, &apos;rows_per_partition&apos;: &apos;NONE&apos;}</Caching>
+      <Compaction>{&apos;max_threshold&apos;: &apos;32&apos;, &apos;min_threshold&apos;: &apos;4&apos;, &apos;class&apos;: &apos;org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy&apos;}</Compaction>
+      <Compression>{&apos;class&apos;: &apos;org.apache.cassandra.io.compress.LZ4Compressor&apos;, &apos;chunk_length_in_kb&apos;: &apos;64&apos;}</Compression>
+      <DclocalReadRepairChance>0.1</DclocalReadRepairChance>
+      <SpeculativeRetry>99PERCENTILE</SpeculativeRetry>
+    </table>
+    <table id="24" parent="3" name="movies">
+      <Caching>{&apos;keys&apos;: &apos;ALL&apos;, &apos;rows_per_partition&apos;: &apos;NONE&apos;}</Caching>
+      <Compaction>{&apos;max_threshold&apos;: &apos;32&apos;, &apos;min_threshold&apos;: &apos;4&apos;, &apos;class&apos;: &apos;org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy&apos;}</Compaction>
+      <Compression>{&apos;class&apos;: &apos;org.apache.cassandra.io.compress.LZ4Compressor&apos;, &apos;chunk_length_in_kb&apos;: &apos;64&apos;}</Compression>
+      <DclocalReadRepairChance>0.1</DclocalReadRepairChance>
+      <SpeculativeRetry>99PERCENTILE</SpeculativeRetry>
+    </table>
+    <table id="25" parent="3" name="movies_by_title">
+      <Caching>{&apos;keys&apos;: &apos;ALL&apos;, &apos;rows_per_partition&apos;: &apos;NONE&apos;}</Caching>
+      <Compaction>{&apos;max_threshold&apos;: &apos;32&apos;, &apos;min_threshold&apos;: &apos;4&apos;, &apos;class&apos;: &apos;org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy&apos;}</Compaction>
+      <Compression>{&apos;class&apos;: &apos;org.apache.cassandra.io.compress.LZ4Compressor&apos;, &apos;chunk_length_in_kb&apos;: &apos;64&apos;}</Compression>
+      <DclocalReadRepairChance>0.1</DclocalReadRepairChance>
+      <SpeculativeRetry>99PERCENTILE</SpeculativeRetry>
+    </table>
+    <key id="26" parent="10" name="primary key">
+      <Columns>autor
+video
+time|DESC
+</Columns>
+    </key>
+    <column id="27" parent="10" name="autor">
+      <Position>1</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="28" parent="10" name="video">
+      <Position>2</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="29" parent="10" name="time">
+      <Position>3</Position>
+      <DataType>timestamp|0s</DataType>
+    </column>
+    <column id="30" parent="10" name="comment">
+      <Position>4</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <key id="31" parent="11" name="primary key">
+      <Columns>username
+</Columns>
+    </key>
+    <column id="32" parent="11" name="username">
+      <Position>1</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="33" parent="11" name="email">
+      <Position>2</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="34" parent="11" name="nome">
+      <Position>3</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="35" parent="11" name="time">
+      <Position>4</Position>
+      <DataType>timestamp|0s</DataType>
+    </column>
+    <key id="36" parent="12" name="primary key">
+      <Columns>video
+user|ASC
+</Columns>
+    </key>
+    <column id="37" parent="12" name="video">
+      <Position>1</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="38" parent="12" name="user">
+      <Position>2</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <key id="39" parent="13" name="primary key">
+      <Columns>videoid
+</Columns>
+    </key>
+    <column id="40" parent="13" name="videoid">
+      <Position>1</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="41" parent="13" name="autor">
+      <Position>2</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="42" parent="13" name="description">
+      <Position>3</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="43" parent="13" name="nome">
+      <Position>4</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="44" parent="13" name="tags">
+      <Position>5</Position>
+      <DataType>set&lt;text&gt;|0s</DataType>
+    </column>
+    <column id="45" parent="13" name="time">
+      <Position>6</Position>
+      <DataType>timestamp|0s</DataType>
+    </column>
+    <key id="46" parent="14" name="primary key">
+      <Columns>video
+user
+event_time
+</Columns>
+    </key>
+    <column id="47" parent="14" name="video">
+      <Position>1</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="48" parent="14" name="user">
+      <Position>2</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="49" parent="14" name="event_time">
+      <Position>3</Position>
+      <DataType>timestamp|0s</DataType>
+    </column>
+    <column id="50" parent="14" name="tipo">
+      <Position>4</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="51" parent="14" name="video_time_seconds">
+      <Position>5</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <key id="52" parent="15" name="primary key">
+      <Columns>autor
+time|DESC
+</Columns>
+    </key>
+    <column id="53" parent="15" name="autor">
+      <Position>1</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="54" parent="15" name="time">
+      <Position>2</Position>
+      <DataType>time|0s</DataType>
+    </column>
+    <column id="55" parent="15" name="comment">
+      <Position>3</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="56" parent="15" name="video">
+      <Position>4</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <key id="57" parent="16" name="primary key">
+      <Columns>video
+time|DESC
+</Columns>
+    </key>
+    <column id="58" parent="16" name="video">
+      <Position>1</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="59" parent="16" name="time">
+      <Position>2</Position>
+      <DataType>time|0s</DataType>
+    </column>
+    <column id="60" parent="16" name="autor">
+      <Position>3</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="61" parent="16" name="comment">
+      <Position>4</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <key id="62" parent="17" name="primary key">
+      <Columns>autor
+video|ASC
+</Columns>
+    </key>
+    <column id="63" parent="17" name="autor">
+      <Position>1</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="64" parent="17" name="video">
+      <Position>2</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <key id="65" parent="18" name="primary key">
+      <Columns>video
+</Columns>
+    </key>
+    <column id="66" parent="18" name="video">
+      <Position>1</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="67" parent="18" name="rating">
+      <Position>2</Position>
+      <DataType>list&lt;int&gt;|0s</DataType>
+    </column>
+    <key id="68" parent="19" name="primary key">
+      <Columns>actorid
+</Columns>
+    </key>
+    <column id="69" parent="19" name="actorid">
+      <Position>1</Position>
+      <DataType>uuid|0s</DataType>
+    </column>
+    <column id="70" parent="19" name="birthday">
+      <Position>2</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <column id="71" parent="19" name="movies">
+      <Position>3</Position>
+      <DataType>list&lt;text&gt;|0s</DataType>
+    </column>
+    <column id="72" parent="19" name="name">
+      <Position>4</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="73" parent="19" name="place_of_birth">
+      <Position>5</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <key id="74" parent="20" name="primary key">
+      <Columns>name
+</Columns>
+    </key>
+    <column id="75" parent="20" name="name">
+      <Position>1</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="76" parent="20" name="id">
+      <Position>2</Position>
+      <DataType>uuid|0s</DataType>
+    </column>
+    <key id="77" parent="21" name="primary key">
+      <Columns>place_of_birth
+actorid|ASC
+</Columns>
+    </key>
+    <column id="78" parent="21" name="place_of_birth">
+      <Position>1</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="79" parent="21" name="actorid">
+      <Position>2</Position>
+      <DataType>uuid|0s</DataType>
+    </column>
+    <column id="80" parent="21" name="birthday">
+      <Position>3</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <column id="81" parent="21" name="movies">
+      <Position>4</Position>
+      <DataType>list&lt;text&gt;|0s</DataType>
+    </column>
+    <column id="82" parent="21" name="name">
+      <Position>5</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <key id="83" parent="22" name="primary key">
+      <Columns>directorid
+</Columns>
+    </key>
+    <column id="84" parent="22" name="directorid">
+      <Position>1</Position>
+      <DataType>uuid|0s</DataType>
+    </column>
+    <column id="85" parent="22" name="birthday">
+      <Position>2</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <column id="86" parent="22" name="movies">
+      <Position>3</Position>
+      <DataType>list&lt;text&gt;|0s</DataType>
+    </column>
+    <column id="87" parent="22" name="name">
+      <Position>4</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="88" parent="22" name="place_of_birth">
+      <Position>5</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <key id="89" parent="23" name="primary key">
+      <Columns>name
+</Columns>
+    </key>
+    <column id="90" parent="23" name="name">
+      <Position>1</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="91" parent="23" name="id">
+      <Position>2</Position>
+      <DataType>uuid|0s</DataType>
+    </column>
+    <key id="92" parent="24" name="primary key">
+      <Columns>movieid
+</Columns>
+    </key>
+    <column id="93" parent="24" name="movieid">
+      <Position>1</Position>
+      <DataType>uuid|0s</DataType>
+    </column>
+    <column id="94" parent="24" name="actors">
+      <Position>2</Position>
+      <DataType>map&lt;text, text&gt;|0s</DataType>
+    </column>
+    <column id="95" parent="24" name="directors">
+      <Position>3</Position>
+      <DataType>list&lt;text&gt;|0s</DataType>
+    </column>
+    <column id="96" parent="24" name="genre">
+      <Position>4</Position>
+      <DataType>set&lt;text&gt;|0s</DataType>
+    </column>
+    <column id="97" parent="24" name="title">
+      <Position>5</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="98" parent="24" name="year">
+      <Position>6</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <key id="99" parent="25" name="primary key">
+      <Columns>title
+</Columns>
+    </key>
+    <column id="100" parent="25" name="title">
+      <Position>1</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="101" parent="25" name="id">
+      <Position>2</Position>
+      <DataType>uuid|0s</DataType>
+    </column>
+  </database-model>
+</dataSource>

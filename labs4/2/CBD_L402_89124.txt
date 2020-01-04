@@ -1,0 +1,71 @@
+// NMEC: 89124
+
+#1
+match(n:Person)-[a:ACTED_IN]->(m:Movie)<-[d:DIRECTED]-(p:Person) WHERE n=p RETURN n.name, m.title
+
+#2
+match(p:Person)-[ACTED_IN]->(m:Movie) where m.released >= 2005 with m, collect(p.name) as actors return m, actors
+
+#3
+match(n)-[r1]->(p)<-[r2]-(n) return n, p, r1, r2
+
+#4
+match(p1:Person)-[:REVIEWED]->(m:Movie)<-[:REVIEWED]-(p2:Person) WHERE id(p1) < id(p2) RETURN p1.name, p2.name, m.title
+
+#5
+match (p1)-[:ACTED_IN]->(m:Movie)<-[:ACTED_IN]-(p2) 
+where id(p1) < id(p2) 
+WITH p1, p2, collect(m) as commonMovies 
+WHERE size(commonMovies) >= 2
+RETURN p1, p2, commonMovies
+
+#6
+match (p:Person)-[:ACTED_IN]->(m:Movie) 
+where m.title='Apollo 13' 
+WITH p, m, (m.released - p.born) as age 
+WITH m, avg(age) as avg_age 
+return m, avg_age
+
+#7
+match (p:Person)-[:ACTED_IN]->(m:Movie) 
+WITH p, m, (m.released - p.born) as age 
+WITH m, avg(age) as avg_age 
+return m, round(100*avg_age)/100 
+ORDER BY avg_age DESC 
+LIMIT 10
+
+#8
+match (p:Person)-[r:ACTED_IN]->(m:Movie) 
+WITH m, r, (m.released - p.born) as age
+WITH m, r, avg(age) as avg_age 
+RETURN r ORDER BY avg_age ASC LIMIT 1
+
+#9
+match (p1:Person {name:'John Cusack'}), (p2:Person {name:'Demi Moore'}), 
+p = shortestPath((p1)-[*]-(p2))
+WITH p
+WHERE length(p)> 1 return p
+
+#10
+match (p1:Person {name:'Keanu Reeves'}), (p2:Person {name:'Tom Cruise'}), 
+p = shortestPath((p1)-[*]-(p2))
+WITH p
+WHERE length(p)> 1 WITH length(p) as size return size
+
+#11
+match (p1:Person), (p2:Person) 
+WHERE p1.name STARTS WITH 'Jim' and p2.name STARTS WITH 'Kevin' 
+match (p1), (p2), p = shortestPath((p1)-[*]-(p2)) 
+WITH p return p
+
+#12
+match(n:Person), (p:Person {name: 'Jim Cash'}) 
+MATCH path = allShortestPaths((n)-[*..2]-(p)) 
+WHERE id(n) < id(p) 
+return n
+
+#13
+match(n:Person), (p:Person {name: 'Kevin Bacon'}) 
+MATCH path = allShortestPaths((n)-[*]-(p)) 
+WHERE id(n) < id(p) 
+return n, path

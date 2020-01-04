@@ -1,0 +1,43 @@
+> use mydb
+> db.movie.insert({"name":"Pulp Fiction"})
+> show dbs
+admin	0.000GB
+config  0.000GB
+local   0.000GB
+mydb    0.000GB
+
+> db.createCollection("mycol")
+> db.post.insert([
+   {
+      title: 'MongoDB Overview', 
+      description: 'MongoDB is no sql database',
+      by: 'tutorials point',
+      url: 'http://www.tutorialspoint.com',
+      tags: ['mongodb', 'database', 'NoSQL'],
+      likes: 100
+   },
+	
+   {
+      title: 'NoSQL Database', 
+      description: "NoSQL database doesn't have tables",
+      by: 'tutorials point',
+      url: 'http://www.tutorialspoint.com',
+      tags: ['mongodb', 'database', 'NoSQL'],
+      likes: 20, 
+      comments: [	
+         {
+            user:'user1',
+            message: 'My first comment',
+            dateCreated: new Date(2013,11,10,2,35),
+            like: 0 
+         }
+      ]
+   }
+])
+
+> show collections
+mycol
+post
+
+> db.post.update({"title":"MongoDB Overview"}, {$set:{"title":"New Title"}},{multi:true})
+

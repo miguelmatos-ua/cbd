@@ -1,0 +1,253 @@
+create table gestao_users
+(
+    username text primary key,
+    email    text,
+    nome     text,
+    time     timestamp
+)
+    with caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+         and compaction = {'max_threshold': '32', 'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy'}
+         and compression = {'class': 'org.apache.cassandra.io.compress.LZ4Compressor', 'chunk_length_in_kb': '64'}
+         and dclocal_read_repair_chance = 0.1;
+
+{"username": "user14", "email": "email14@email.pt", "nome": "Nome 14", "time": "2019-11-27 16:50:43.142Z"}
+{"username": "user8", "email": "email8@email.pt", "nome": "Nome 8", "time": "2019-11-27 16:50:42.967Z"}
+{"username": "user12", "email": "email12@email.pt", "nome": "Nome 12", "time": "2019-11-27 16:50:43.099Z"}
+{"username": "user2", "email": "email2@email.pt", "nome": "Nome 2", "time": "2019-11-27 16:50:42.832Z"}
+{"username": "user9", "email": "email9@email.pt", "nome": "Nome 9", "time": "2019-11-27 16:50:42.990Z"}
+{"username": "user13", "email": "email13@email.pt", "nome": "Nome 13", "time": "2019-11-27 16:50:43.126Z"}
+{"username": "user4", "email": "email4@email.pt", "nome": "Nome 4", "time": "2019-11-27 16:50:42.883Z"}
+{"username": "user1", "email": "email1@email.pt", "nome": "Nome 1", "time": "2019-11-27 16:47:16.835Z"}
+{"username": "user10", "email": "email10@email.pt", "nome": "Nome 10", "time": "2019-11-27 16:50:43.021Z"}
+{"username": "user7", "email": "email7@email.pt", "nome": "Nome 7", "time": "2019-11-27 16:50:42.945Z"}
+{"username": "user3", "email": "email3@email.pt", "nome": "Nome 3", "time": "2019-11-27 16:50:42.867Z"}
+{"username": "user17", "email": "email17@email.pt", "nome": "Nome 17", "time": "2019-11-27 16:50:43.213Z"}
+{"username": "user6", "email": "email6@email.pt", "nome": "Nome 6", "time": "2019-11-27 16:50:42.921Z"}
+{"username": "user11", "email": "email11@email.pt", "nome": "Nome 11", "time": "2019-11-27 16:50:43.065Z"}
+{"username": "user5", "email": "email5@email.pt", "nome": "Nome 5", "time": "2019-11-27 16:50:42.901Z"}
+{"username": "user16", "email": "email16@email.pt", "nome": "Nome 16", "time": "2019-11-27 16:50:43.187Z"}
+{"username": "user15", "email": "email15@email.pt", "nome": "Nome 15", "time": "2019-11-27 16:50:43.164Z"}
+
+
+create table gestao_videos
+(
+    videoid     text,
+    time        timestamp,
+    autor       text,
+    description text,
+    nome        text,
+    tags        set<text>,
+    primary key (videoid, time)
+)
+    with caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+     and compaction = {'max_threshold': '32', 'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy'}
+     and compression = {'class': 'org.apache.cassandra.io.compress.LZ4Compressor', 'chunk_length_in_kb': '64'}
+     and dclocal_read_repair_chance = 0.1;
+
+{"videoid": "video2", "time": "2019-12-03 14:23:39.811Z", "autor": "user16", "description": "Description of video 2", "nome": "Video 2", "tags": ["video games"]}
+{"videoid": "video6", "time": "2019-12-03 14:23:40.313Z", "autor": "user2", "description": "Description of video 6", "nome": "Video 6", "tags": ["movies", "music"]}
+{"videoid": "video3", "time": "2019-12-03 14:23:39.961Z", "autor": "user17", "description": "Description of video 3", "nome": "Video 3", "tags": ["live", "music"]}
+{"videoid": "video10", "time": "2019-12-03 14:23:40.930Z", "autor": "user6", "description": "Description of video 10", "nome": "Video 10", "tags": ["comedy", "live", "video games"]}
+{"videoid": "video4", "time": "2019-12-03 14:23:40.092Z", "autor": "user12", "description": "Description of video 4", "nome": "Video 4", "tags": ["live"]}
+{"videoid": "video15", "time": "2019-12-03 14:23:41.520Z", "autor": "user15", "description": "Description of video 15", "nome": "Video 15", "tags": ["comedy"]}
+{"videoid": "video9", "time": "2019-12-03 14:23:40.848Z", "autor": "user2", "description": "Description of video 9", "nome": "Video 9", "tags": ["music"]}
+{"videoid": "video8", "time": "2019-12-03 14:23:40.631Z", "autor": "user9", "description": "Description of video 8", "nome": "Video 8", "tags": ["live"]}
+{"videoid": "video5", "time": "2019-12-03 14:23:40.176Z", "autor": "user1", "description": "Description of video 5", "nome": "Video 5", "tags": ["movies"]}
+{"videoid": "video17", "time": "2019-12-03 14:23:41.689Z", "autor": "user1", "description": "Description of video 17", "nome": "Video 17", "tags": ["Aveiro", "comedy", "music"]}
+{"videoid": "video7", "time": "2019-12-03 14:23:40.486Z", "autor": "user3", "description": "Description of video 7", "nome": "Video 7", "tags": ["music"]}
+{"videoid": "video1", "time": "2019-12-03 14:23:39.728Z", "autor": "user1", "description": "Description of video 1", "nome": "Video 1", "tags": ["music"]}
+{"videoid": "video14", "time": "2019-12-03 14:23:41.434Z", "autor": "user4", "description": "Description of video 14", "nome": "Video 14", "tags": ["comedy"]}
+{"videoid": "video13", "time": "2019-12-03 14:23:41.361Z", "autor": "user1", "description": "Description of video 13", "nome": "Video 13", "tags": ["comedy"]}
+{"videoid": "video12", "time": "2019-12-03 14:23:41.196Z", "autor": "user12", "description": "Description of video 12", "nome": "Video 12", "tags": ["video games"]}
+{"videoid": "video16", "time": "2019-12-03 14:23:41.589Z", "autor": "user1", "description": "Description of video 16", "nome": "Video 16", "tags": ["comedy", "music"]}
+{"videoid": "video11", "time": "2019-12-03 14:23:41.096Z", "autor": "user10", "description": "Description of video 11", "nome": "Video 11", "tags": ["live", "music"]}
+
+create table search_videos_by_author
+(
+    autor       text,
+    time        timestamp,
+    description text,
+    nome        text,
+    tags        set<text>,
+    video       text,
+    primary key (autor, time)
+)
+    with caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+     and compaction = {'max_threshold': '32', 'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy'}
+     and compression = {'class': 'org.apache.cassandra.io.compress.LZ4Compressor', 'chunk_length_in_kb': '64'}
+     and dclocal_read_repair_chance = 0.1;
+
+create table gestao_video_followers
+(
+    video text,
+    user  text,
+    primary key (video, user)
+)
+    with caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+     and compaction = {'max_threshold': '32', 'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy'}
+     and compression = {'class': 'org.apache.cassandra.io.compress.LZ4Compressor', 'chunk_length_in_kb': '64'}
+     and dclocal_read_repair_chance = 0.1;
+
+{"video": "video2", "user": "user1"}
+{"video": "video2", "user": "user15"}
+{"video": "video2", "user": "user2"}
+{"video": "video2", "user": "user3"}
+{"video": "video2", "user": "user4"}
+{"video": "video2", "user": "user5"}
+{"video": "video2", "user": "user6"}
+{"video": "video6", "user": "user14"}
+{"video": "video3", "user": "user1"}
+{"video": "video3", "user": "user15"}
+{"video": "video3", "user": "user16"}
+{"video": "video3", "user": "user4"}
+{"video": "video10", "user": "user1"}
+{"video": "video10", "user": "user12"}
+{"video": "video4", "user": "user1"}
+{"video": "video4", "user": "user15"}
+{"video": "video4", "user": "user4"}
+{"video": "video15", "user": "user1"}
+{"video": "video15", "user": "user4"}
+{"video": "video9", "user": "user1"}
+{"video": "video9", "user": "user11"}
+{"video": "video9", "user": "user15"}
+{"video": "video9", "user": "user4"}
+{"video": "video8", "user": "user5"}
+{"video": "video5", "user": "user10"}
+{"video": "video5", "user": "user11"}
+{"video": "video5", "user": "user5"}
+{"video": "video5", "user": "user7"}
+{"video": "video7", "user": "user4"}
+{"video": "video1", "user": "user1"}
+{"video": "video1", "user": "user11"}
+{"video": "video1", "user": "user12"}
+{"video": "video1", "user": "user14"}
+{"video": "video1", "user": "user3"}
+{"video": "video1", "user": "user8"}
+{"video": "video14", "user": "user15"}
+{"video": "video14", "user": "user2"}
+{"video": "video14", "user": "user4"}
+{"video": "video13", "user": "user1"}
+{"video": "video13", "user": "user15"}
+{"video": "video13", "user": "user4"}
+{"video": "video13", "user": "user6"}
+{"video": "video12", "user": "user1"}
+{"video": "video12", "user": "user12"}
+{"video": "video16", "user": "user15"}
+{"video": "video16", "user": "user16"}
+{"video": "video16", "user": "user5"}
+{"video": "video11", "user": "user15"}
+{"video": "video11", "user": "user2"}
+{"video": "video11", "user": "user4"}
+
+create table registo_eventos
+(
+    video              text,
+    user               text,
+    event_time         timestamp,
+    tipo               text,
+    video_time_seconds int,
+    primary key ((video, user), event_time)
+)
+    with caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+     and compaction = {'max_threshold': '32', 'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy'}
+     and compression = {'class': 'org.apache.cassandra.io.compress.LZ4Compressor', 'chunk_length_in_kb': '64'}
+     and dclocal_read_repair_chance = 0.1;
+
+{"video": "user5", "user": "video12", "event_time": "2019-12-02 14:40:03.621Z", "tipo": "pause", "video_time_seconds": 311}
+{"video": "user11", "user": "video2", "event_time": "2019-12-02 14:40:03.095Z", "tipo": "pause", "video_time_seconds": 85}
+{"video": "user11", "user": "video7", "event_time": "2019-12-02 14:40:03.292Z", "tipo": "pause", "video_time_seconds": 53}
+{"video": "user17", "user": "video6", "event_time": "2019-12-02 14:40:03.338Z", "tipo": "play", "video_time_seconds": 52}
+{"video": "user1", "user": "video1", "event_time": "2019-12-02 14:40:02.937Z", "tipo": "pause", "video_time_seconds": 3}
+ {"video": "user1", "user": "video1", "event_time": "2019-12-02 14:40:02.957Z", "tipo": "play", "video_time_seconds": 3}
+{"video": "user11", "user": "video8", "event_time": "2019-12-02 14:40:03.213Z", "tipo": "pause", "video_time_seconds": 535}
+{"video": "user8", "user": "video3", "event_time": "2019-12-02 14:40:03.687Z", "tipo": "play", "video_time_seconds": 15}
+{"video": "user2", "user": "video15", "event_time": "2019-12-02 14:40:03.486Z", "tipo": "pause", "video_time_seconds": 25}
+{"video": "user1", "user": "video2", "event_time": "2019-12-02 14:40:02.997Z", "tipo": "pause", "video_time_seconds": 5}
+{"video": "user1", "user": "video5", "event_time": "2019-12-02 14:40:03.411Z", "tipo": "pause", "video_time_seconds": 51}
+{"video": "user4", "user": "video4", "event_time": "2019-12-02 14:40:03.557Z", "tipo": "play", "video_time_seconds": 335}
+{"video": "user12", "user": "video12", "event_time": "2019-12-02 14:40:03.172Z", "tipo": "play", "video_time_seconds": 56}
+
+create table gestao_comments
+(
+    autor   text,
+    video   text,
+    time    timestamp,
+    comment text,
+    primary key ((autor, video), time)
+)
+    with clustering order by (time desc)
+     and caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+     and compaction = {'max_threshold': '32', 'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy'}
+     and compression = {'class': 'org.apache.cassandra.io.compress.LZ4Compressor', 'chunk_length_in_kb': '64'}
+     and dclocal_read_repair_chance = 0.1;
+
+{"autor": "user14", "video": "video14", "time": "2019-11-27 23:31:46.562Z", "comment": "This is the sdsd"}
+{"autor": "user16", "video": "video1", "time": "2019-11-27 23:31:46.399Z", "comment": "This is the ddds"}
+{"autor": "user14", "video": "video13", "time": "2019-11-27 23:31:46.351Z", "comment": "This is the asd"}
+{"autor": "user1", "video": "video1", "time": "2019-11-27 23:31:46.313Z", "comment": "This is the comment a"}
+{"autor": "user1", "video": "video1", "time": "2019-11-27 23:31:46.281Z", "comment": "This is the comment"}
+{"autor": "user2", "video": "video14", "time": "2019-11-27 23:31:46.368Z", "comment": "This is w comment"}
+{"autor": "user8", "video": "video11", "time": "2019-11-27 23:31:46.592Z", "comment": "sds is the comment"}
+{"autor": "user1", "video": "video13", "time": "2019-11-27 23:31:46.333Z", "comment": "This is the commentsd "}
+{"autor": "user18", "video": "video5", "time": "2019-11-27 23:31:46.440Z", "comment": "This is asdsad comment"}
+{"autor": "user13", "video": "video3", "time": "2019-11-27 23:31:46.469Z", "comment": "This is the comment"}
+{"autor": "user2", "video": "video10", "time": "2019-11-27 23:31:46.606Z", "comment": "This is s comment"}
+{"autor": "user6", "video": "video2", "time": "2019-11-27 23:31:46.516Z", "comment": "This is the ad"}
+{"autor": "user1", "video": "video5", "time": "2019-11-27 23:31:46.668Z", "comment": "This is dsad comment"}
+{"autor": "user12", "video": "video3", "time": "2019-11-27 23:31:46.636Z", "comment": "This is the ss"}
+{"autor": "user9", "video": "video2", "time": "2019-11-27 23:31:46.619Z", "comment": "This is aa comment"}
+{"autor": "user13", "video": "video4", "time": "2019-11-27 23:31:46.652Z", "comment": "This is the commdent"}
+
+create table search_comments_by_user
+(
+    autor   text,
+    time    time,
+    comment text,
+    video   text,
+    primary key (autor, time)
+)
+    with clustering order by (time desc)
+     and caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+     and compaction = {'max_threshold': '32', 'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy'}
+     and compression = {'class': 'org.apache.cassandra.io.compress.LZ4Compressor', 'chunk_length_in_kb': '64'}
+     and dclocal_read_repair_chance = 0.1;
+
+create table search_comments_by_video
+(
+    video   text,
+    time    time,
+    autor   text,
+    comment text,
+    primary key (video, time)
+)
+    with clustering order by (time desc)
+     and caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+     and compaction = {'max_threshold': '32', 'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy'}
+     and compression = {'class': 'org.apache.cassandra.io.compress.LZ4Compressor', 'chunk_length_in_kb': '64'}
+     and dclocal_read_repair_chance = 0.1;
+
+create table video_ratings
+(
+    video  text primary key,
+    rating list<int>
+)
+    with caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+     and compaction = {'max_threshold': '32', 'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy'}
+     and compression = {'class': 'org.apache.cassandra.io.compress.LZ4Compressor', 'chunk_length_in_kb': '64'}
+     and dclocal_read_repair_chance = 0.1;
+
+{"video": "video2", "rating": [1, 2, 3]}
+{"video": "video6", "rating": [1, 3, 2]}
+{"video": "video3", "rating": [1, 3, 4]}
+{"video": "video10", "rating": [1, 3, 3, 4, 2]}
+{"video": "video4", "rating": [2, 3, 5]}
+{"video": "video15", "rating": [1, 5, 3]}
+{"video": "video9", "rating": [1, 3, 3, 1, 2, 3]}
+{"video": "video8", "rating": [1, 3, 3, 1]}
+{"video": "video5", "rating": [1, 3, 3, 5]}
+{"video": "video7", "rating": [1, 3, 3, 4]}
+{"video": "video1", "rating": [1, 3, 3]}
+{"video": "video14", "rating": [1, 2, 3]}
+{"video": "video13", "rating": [1, 3]}
+{"video": "video12", "rating": [1, 3, 3, 5, 5]}
+{"video": "video11", "rating": [1, 3, 3, 1, 2]}

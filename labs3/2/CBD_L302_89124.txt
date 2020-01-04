@@ -1,0 +1,23 @@
+# 1
+SELECT * from gestao_comments where autor='user1' and video='video1' LIMIT 3;
+
+# 2
+SELECT tags from gestao_videos where videoid='video1';
+
+# 3
+SELECT * from gestao_videos where tags contains 'Aveiro' ALLOW FILTERING ;
+
+# 4
+SELECT * from registo_eventos WHERE user='user1' and video='video1' LIMIT 5;
+
+# 5
+SELECT * FROM search_videos_by_author WHERE autor='maria1987' and time=toTimestamp('2017-08-10');
+
+# 6
+SELECT * FROM gestao_videos LIMIT 10;
+
+# 7
+SELECT user FROM gestao_video_followers WHERE video='video1';
+
+# 8
+Não é possível de realizar, seria necessário um join
